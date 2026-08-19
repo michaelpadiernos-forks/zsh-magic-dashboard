@@ -104,7 +104,7 @@ function _gitstatus {
 			-Ee $'s|([^/+]*)(/)|\033[1;36m\\1\033[1;33m\\2\033[0m|g' \
 			-e $'s/^\\+/\033[1;35m \033[0m /' \
 			-e $'s/ \\|/ \033[1;30m│\033[0m/'
-		_separator
+		print
 	fi
 }
 
@@ -127,7 +127,7 @@ function _magic_dashboard {
 	if git rev-parse --is-inside-work-tree &>/dev/null; then
 		local max_gitlog_lines=${MAGIC_DASHBOARD_GITLOG_LINES:-5}
 		_gitlog -n "$max_gitlog_lines"
-		_separator
+		print
 		_gitstatus
 	fi
 	_list_files_here
